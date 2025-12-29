@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Kuliah\\Semester 3\\Pemograman Beroeientasi Object\\mysql-connector-j-9.5.0\\mysql-connector-j-9.5.0\\mysql-connector-j-9.5.0.jar"
+    ]
+}
