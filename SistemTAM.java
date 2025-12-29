@@ -51,7 +51,7 @@ public class SistemTAM {
         }
     }
 
-    // MASALAH #8: Pencatatan Barang Masuk Gudang
+    //Pencatatan Barang Masuk Gudang
     private void catatBarangGudang() {
         try {
             System.out.print("Nama Barang/Kargo: ");
@@ -72,7 +72,7 @@ public class SistemTAM {
         }
     }
 
-    // MASALAH #7: Efisiensi Biaya & Penomoran Resi Unik
+    //Efisiensi Biaya & Penomoran Resi Unik
     private void buatResiPengiriman() {
         tampilkanStokTersedia();
         System.out.print("\nMasukkan ID Barang dari Gudang yang akan dikirim: ");
@@ -87,6 +87,7 @@ public class SistemTAM {
         System.out.println("Jarak(KM): ");
         double jarak = input.nextDouble();
 
+        //Manipulasi Method Date dan String
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmm");
         String noResi = "TAM-" + sdf.format(new Date()) + "-" + tujuan.toUpperCase().substring(0,3);
         
@@ -99,6 +100,7 @@ public class SistemTAM {
             // Ambil data barang dari gudang
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT nama_barang, berat FROM gudang_barang WHERE id_barang = " + idBarang);
+            // Poin d: Percabangan
             if (rs.next()) {
                 namaBarang = rs.getString("nama_barang");
                 berat = rs.getDouble("berat");
@@ -147,6 +149,7 @@ public class SistemTAM {
     private void tampilkanAntrean() {
         System.out.println("\n--- ANTREAN PENGIRIMAN HARI INI (DARI ARRAYLIST) ---");
         if (listAntreanHariIni.isEmpty()) System.out.println("Antrean masih kosong.");
+        //Poin d: Perulangan
         for (Pengiriman p : listAntreanHariIni) {
             System.out.println(p.noResi + " | " + p.pengirim + " | Tujuan: " + p.tujuan + " | Rp " + p.hitungTarif());
         }
